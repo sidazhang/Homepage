@@ -113,9 +113,9 @@ $$ P( \theta | \textrm{12 page views, 794 visitors} ) = \frac{ \theta^{12+1.1-1}
 
 **If you skipped the math, start reading again.**
 
-It turns out that $@C = B(12+1.1,794-12+30)$@, although I'm going to skip the algebra which proves this (you can find it [here](https://en.wikipedia.org/wiki/Beta_distribution#Bayesian_inference) if you want to see). This means that our posterior distribution is:
+It turns out that $@C = B(12+1.1-1,794-12+30-1)$@, although I'm going to skip the algebra which proves this (you can find it [here](https://en.wikipedia.org/wiki/Beta_distribution#Bayesian_inference) if you want to see). This means that our posterior distribution is:
 
-$$ P( \theta | \textrm{12 page views, 794 visitors} ) = f_{1.1+12, 30+794-12}(\theta) $$
+$$ P( \theta | \textrm{12 page views, 794 visitors} ) = f_{1.1+12-1, 30-1+794-12}(\theta) $$
 
 I.e., the posterior is just another beta distribution, albeit with different parameters. In the next picture I'll plot the prior (the blue line) together with the posterior (the green line) to illustrate how the evidence has shaped our beliefs:
 
@@ -135,7 +135,7 @@ First of all, we have our credible intervals. We are virtually certain that the 
 
 We can also compute the possibility that the conversion rate is at least 1%::
 
-$$ \int_{0.01}^1 f_{1.1+12, 30+794-12}(\theta) d\theta = 0.93127 $$
+$$ \int_{0.01}^1 f_{1.1+12-1, 30+794-12-1}(\theta) d\theta = 0.93127 $$
 
 This was computed by me with the following python code, which I'm going to display simply to emphasize that manipulating these variables in python/scipy is quite simple:
 
